@@ -1,0 +1,2 @@
+bin/AssetRipper.GUI.Free filter=lfs diff=lfs merge=lfs -text
+bin/libcapstone.so filter=lfs diff=lfs merge=lfs -text

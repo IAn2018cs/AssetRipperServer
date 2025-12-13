@@ -1,0 +1,33 @@
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temp
+*.tmp
+
+local/
+data/
+bin/
+
+
+# Python
+.venv/
+venv/
+*__pycache__/
+*.pyc

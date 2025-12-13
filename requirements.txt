@@ -1,0 +1,25 @@
+# Web framework
+fastapi==0.109.0
+uvicorn[standard]==0.27.0
+python-multipart==0.0.6
+
+# HTTP client for AssetRipper communication
+httpx==0.26.0
+httpx[socks]==0.26.0
+
+# Database
+sqlalchemy==2.0.36
+aiosqlite==0.20.0
+
+# Background tasks
+apscheduler==3.10.4
+
+# Configuration
+pydantic
+pydantic-settings
+
+# File handling
+aiofiles==23.2.1
+
+# Utilities
+python-dotenv==1.0.0

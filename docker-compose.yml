@@ -1,0 +1,56 @@
+services:
+  assetripper-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: assetripper-api
+    ports:
+      - "${API_PORT:-8000}:8000"
+    environment:
+      # Application settings
+      - ENVIRONMENT=production
+      - API_PORT=8000
+      - API_HOST=0.0.0.0
+
+      # AssetRipper settings
+      - ASSETRIPPER_PORT=8765
+      - ASSETRIPPER_BINARY_PATH=/app/bin/AssetRipper.GUI.Free
+      - ASSETRIPPER_STARTUP_TIMEOUT=30
+      - ASSETRIPPER_HEALTH_CHECK_INTERVAL=30
+
+      # Database
+      - DATABASE_URL=sqlite+aiosqlite:///app/data/db/assetripper.db
+
+      # File paths
+      - UPLOAD_DIR=/app/data/uploads
+      - EXPORT_DIR=/app/data/exports
+
+      # Cleanup settings
+      - FILE_RETENTION_DAYS=${FILE_RETENTION_DAYS:-30}
+      - CLEANUP_SCHEDULE_CRON=0 2 * * *
+
+      # Logging
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_FILE=/app/logs/app.log
+
+      # Task processing settings
+      - MAX_CONCURRENT_TASKS=1
+      - TASK_TIMEOUT_SECONDS=3600
+      - TASK_LOAD_TIMEOUT=300
+      - TASK_EXPORT_TIMEOUT=3600
+
+    volumes:
+      # Persistent data volumes - mapped to local directories
+      - ./data/uploads:/app/data/uploads
+      - ./data/exports:/app/data/exports
+      - ./data/db:/app/data/db
+      - ./logs:/app/logs
+
+    restart: unless-stopped
+
+    networks:
+      - assetripper-network
+
+networks:
+  assetripper-network:
+    driver: bridge

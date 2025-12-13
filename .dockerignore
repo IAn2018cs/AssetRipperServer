@@ -1,0 +1,59 @@
+# Data directories (mapped as volumes in docker-compose)
+data/
+logs/
+local/
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Git
+.git/
+.gitignore
+.gitattributes
+.claude/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Documentation and local dev scripts
+README.md
+LOCAL_DEV.md
+start.sh
+stop.sh
+restart.sh
+
+# Environment files (keep .env.example for reference)
+.env
+.env.local
+.env.*.local
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Docker files (already in context, no need to copy)
+Dockerfile
+docker-compose.yml
+.dockerignore
